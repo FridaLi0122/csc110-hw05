@@ -1,22 +1,59 @@
 """
-Name: (put your name here)
-Peers: (add any collaborators)
-References: (anything you checked to solve this)
+Name: Frida Li
+Peers: 
+References: 
 """
 
 def get_letter():
-    """ Add your own Docstring """
+     """Ask the user for a single uppercase letter (A, B, or C)."""
+     while True:
+         letter1 = input("Give an single uppercase letter: ")
+         if len(letter1) != 1:
+             print("Error: it needs to be a single character.")
+             continue
+         if letter1 != "A" and letter1 and "B" and letter1 != "C":
+             print("Error: You provided the wrong character.")
+             continue
+         return letter1
+        
     # remove the default return and add your code
-    return ""
 
 def get_digit():
-    """ Add your own Docstring """
+    """Get a single digit (1, 2, or 3) from the user."""
+    while True:
+        number = input("Give an single number character: ")
+        if number.isdigit() is False:
+            print("Error: your input should be only digits.")
+            continue
+        
+        if number not in ("1", "2", "3"):
+            print("Error: a single digit needs to be in [1,3].")
+            continue
+        
+        return number
     # remove the default return and add your code
-    return 0
 
 
 def check_pattern(letter, digit, lst):
-    """ Add your own Docstring """
+    """Print strings where the given letter appears before the digit."""
+    print("Strings with the pattern:")
+    for i in range(len(lst)):
+        string = lst[i]
+        # Track whether a matching pattern is found in the current string
+        found = False
+        
+        for k in range(len(string)):
+            if string[k] == letter:
+                for j in range(k+1, len(string)):
+                    if string[j] == digit:
+                        found = True
+                        
+        if found:
+            print(string, end = " ")
+
+            
+    print()       
+
     # remove the default pass and add your code
     pass
 
@@ -41,12 +78,29 @@ def main ():
     #          IF the user replies with anything else, the loop ends
     # ADD YOUR CODE UNDER THIS LINE
     # -------------------------------------------------
+    
+    # Get the letter and digit, then search for matches
+    letter = get_letter()
+    
+    digit = get_digit()
+    
+    lst = st_list
+    
+    check_pattern(letter, digit, lst)
+    
+    answer = input("Try Again? (y/n):")
+    if answer == "y":
+        main()
+        
+    elif answer == "n":
+        print("The End")
 
+        
+        
     # Your code Here
 
     # -------------------------------------------------
     # No need to modify anything Below this line
-    print("The End")
     
 
 # Do not modify these two lines
